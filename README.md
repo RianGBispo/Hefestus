@@ -97,7 +97,8 @@
 <ul>
   <li>E-mail: rianbispo028@gmail.com</li>
   <li>Website: <a href="https://rianalytics.wordpress.com/">https://rianalytics.wordpress.com/</a></li>
-  <li>LinkedIn: <a href="linkedin.com/in/rian-bispo">linkedin.com/in/rian-bispo</a></li>
+  <li>LinkedIn: [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/rian-bispo)</li>
+
   <li>Instagram: rian.bsp</li>
 </ul>
 
