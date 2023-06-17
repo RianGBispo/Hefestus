@@ -1,84 +1,106 @@
-Hefestus - Controle de Lubrificação
+<h1>Hefestus - Controle de Lubrificação</h1>
 
+<p>O projeto Hefestus é um programa que oferece recursos para o gerenciamento de trocas e reposições de óleos lubrificantes e filtros, como parte da manutenção preventiva de máquinas, veículos, equipamentos, entre outros. Foi desenvolvido para atender a uma necessidade específica de uma empresa, proporcionando um controle eficiente e eficaz, permitindo análises de vazamentos e monitoramento dos custos com lubrificação dos ativos.</p>
 
-O projeto Hefestus é um programa que oferece recursos para o gerenciamento de trocas e reposições de óleos lubrificantes e filtros, como parte da manutenção preventiva de máquinas, veículos, equipamentos, entre outros. Foi desenvolvido para atender a uma necessidade específica de uma empresa, proporcionando um controle eficiente e eficaz, permitindo análises de vazamentos e monitoramento dos custos com lubrificação dos ativos.
+<h2>Sobre o Projeto</h2>
 
-Sobre o Projeto
-O objetivo principal do projeto Hefestus é simplificar e automatizar o controle de lubrificação, oferecendo funcionalidades importantes para a gestão adequada dos processos. Algumas das características incluem:
+<p>O objetivo principal do projeto Hefestus é simplificar e automatizar o controle de lubrificação, oferecendo funcionalidades importantes para a gestão adequada dos processos. Algumas das características incluem:</p>
 
-Cadastro de usuários com diferentes permissões e senhas criptografadas armazenadas no banco de dados.
-Geração de relatórios completos para análise e tomada de decisões.
-Atualização de horímetros de máquinas, permitindo o acompanhamento preciso das trocas de óleo.
-Avisos automáticos de trocas de óleo próximas, facilitando o planejamento da manutenção.
-Alertas sobre vazamentos não solucionados, permitindo a identificação e correção de problemas.
-O programa foi desenvolvido de forma ágil, sendo possível contar com uma versão utilizável e visualmente atrativa em apenas duas semanas de trabalho.
+<ul>
+  <li>Cadastro de usuários com diferentes permissões e senhas criptografadas armazenadas no banco de dados.</li>
+  <li>Geração de relatórios completos para análise e tomada de decisões.</li>
+  <li>Atualização de horímetros de máquinas, permitindo o acompanhamento preciso das trocas de óleo.</li>
+  <li>Avisos automáticos de trocas de óleo próximas, facilitando o planejamento da manutenção.</li>
+  <li>Alertas sobre vazamentos não solucionados, permitindo a identificação e correção de problemas.</li>
+</ul>
 
-Tecnologias Utilizadas
-O projeto Hefestus faz uso das seguintes tecnologias:
+<p>O programa foi desenvolvido de forma ágil, sendo possível contar com uma versão utilizável e visualmente atrativa em apenas duas semanas de trabalho.</p>
 
-Python
-Flask
-Pandas
-SQLAlchemy
-Flask-Login
+<h2>Tecnologias Utilizadas</h2>
 
-Configuração do Ambiente
-Para configurar o ambiente de desenvolvimento, siga as instruções abaixo:
+<p>O projeto Hefestus faz uso das seguintes tecnologias:</p>
 
-Clone o repositório: git clone https://github.com/seu-usuario/seu-projeto.git
-Navegue até o diretório do projeto: cd seu-projeto
-Instale as dependências: pip install -r requirements.txt
-Configure as variáveis de ambiente necessárias, como banco de dados e chaves de API.
-Execute o projeto: python app.py
-Abra o navegador e acesse: http://localhost:5000
-Como Executar
-Para executar o projeto, siga as etapas abaixo:
+<ul>
+  <li>Python</li>
+  <li>Flask</li>
+  <li>Pandas</li>
+  <li>SQLAlchemy</li>
+  <li>Flask-Login</li>
+</ul>
 
-Certifique-se de ter concluído a configuração do ambiente conforme descrito acima.
-Execute o projeto usando o comando: python app.py.
-Abra o navegador e acesse: http://localhost:5000.
-Funcionalidades Principais
-O projeto Hefestus oferece as seguintes funcionalidades principais:
+<h2>Configuração do Ambiente</h2>
 
-Cadastro de Usuários
-É possível criar contas de usuário com diferentes permissões, garantindo a segurança do sistema.
+<p>Para configurar o ambiente de desenvolvimento, siga as instruções abaixo:</p>
 
-Geração de Relatórios
-O programa permite gerar relatórios completos sobre as trocas de óleo e filtros, auxiliando na análise de desempenho e controle de custos.
+<ol>
+  <li>Clone o repositório: <code>git clone https://github.com/seu-usuario/seu-projeto.git</code></li>
+  <li>Navegue até o diretório do projeto: <code>cd seu-projeto</code></li>
+  <li>Instale as dependências: <code>pip install -r requirements.txt</code></li>
+  <li>Configure as variáveis de ambiente necessárias, como banco de dados e chaves de API.</li>
+  <li>Execute o projeto: <code>python app.py</code></li>
+  <li>Abra o navegador e acesse: <a href="http://localhost:5000">http://localhost:5000</a></li>
+</ol>
 
-Atualização de Horímetros de Máquinas
-O sistema possibilita inserir informações precisas sobre a utilização das máquinas, facilitando o planejamento das trocas de óleo.
+<h2>Como Executar</h2>
 
-Avisos de Trocas de Óleo Próximas
-O Hefestus emite alertas automáticos para informar quando uma troca de óleo está próxima de ser necessária, evitando falhas de lubrificação.
+<p>Para executar o projeto, siga as etapas abaixo:</p>
 
-Alertas de Vazamentos Não Solucionados
-O programa identifica vazamentos não resolvidos e envia alertas, permitindo que a equipe de manutenção tome as medidas adequadas.
+<ol>
+  <li>Certifique-se de ter concluído a configuração do ambiente conforme descrito acima.</li>
+  <li>Execute o projeto usando o comando: <code>python app.py</code>.</li>
+  <li>Abra o navegador e acesse: <a href="http://localhost:5000">http://localhost:5000</a>.</li>
+</ol>
 
-Contribuição
-Se você deseja contribuir para o projeto Hefestus, siga as etapas abaixo:
+<h2>Funcionalidades Principais</h2>
 
-Faça um fork do repositório.
-Crie um branch para a sua contribuição: git checkout -b minha-contribuicao.
-Faça as alterações desejadas no código.
-Faça commit das suas alterações: git commit -m "Minha contribuição: descrição das alterações".
-Faça push para o branch: git push origin minha-contribuicao.
-Abra um Pull Request no repositório original.
-Licença
-O projeto Hefestus está licenciado sob a MIT License.
+<p>O projeto Hefestus oferece as seguintes funcionalidades principais:</p>
 
-O Futuro
-Por enquanto, o projeto trata-se de um programa básico que atende às necessidades de forma eficiente, mas simples. Algumas limitações atuais incluem:
+<ul>
+  <li>Cadastro de Usuários - É possível criar contas de usuário com diferentes permissões, garantindo a segurança do sistema.</li>
+  <li>Geração de Relatórios - O programa permite gerar relatórios completos sobre as trocas de óleo e filtros, auxiliando na análise de desempenho e controle de custos.</li>
+  <li>Atualização de Horímetros de Máquinas - O sistema possibilita inserir informações precisas sobre a utilização das máquinas, facilitando o planejamento das trocas de óleo.</li>
+  <li>Avisos de Trocas de Óleo Próximas - O Hefestus emite alertas automáticos para informar quando uma troca de óleo está próxima de ser necessária, evitando falhas de lubrificação.</li>
+  <li>Alertas de Vazamentos Não Solucionados - O programa identifica vazamentos não resolvidos e envia alertas, permitindo que a equipe de manutenção tome as medidas adequadas.</li>
+</ul>
 
-O relatório é um arquivo CSV com as atividades realizadas. Futuramente, será implementado um dashboard na página de relatórios. Enquanto isso, é possível utilizar o PowerBI para gerar relatórios incríveis.
-O programa requer um arquivo Excel para a atualização dos horímetros. Essa abordagem foi escolhida para permitir a integração com outros softwares utilizados pelas empresas. Para facilitar a atualização dos horímetros, futuramente, pode ser criada uma API que interaja com um aplicativo específico. Por enquanto, é possível desenvolver um arquivo Python com o Pandas para gerar o arquivo Excel necessário.
-Por se tratar de uma primeira versão, o programa pode conter outros erros ainda não explorados, mas que serão corrigidos em breve.
-Contato
-Para mais informações sobre o projeto ou entrar em contato com a equipe responsável, utilize os seguintes meios:
+<h2>Contribuição</h2>
 
-E-mail: rianbispo028@gmail.com
-Website: https://rianalytics.wordpress.com/
-LinkedIn: linkedin.com/in/rian-bispo
-Instagram: rian.bsp
-Outras Informações
-Fiquem à vontade para contribuir ou se inspirar para aplicações específicas do seu problema!
+<p>Se você deseja contribuir para o projeto Hefestus, siga as etapas abaixo:</p>
+
+<ol>
+  <li>Faça um fork do repositório.</li>
+  <li>Crie um branch para a sua contribuição: <code>git checkout -b minha-contribuicao</code>.</li>
+  <li>Faça as alterações desejadas no código.</li>
+  <li>Faça commit das suas alterações: <code>git commit -m "Minha contribuição: descrição das alterações"</code>.</li>
+  <li>Faça push para o branch: <code>git push origin minha-contribuicao</code>.</li>
+  <li>Abra um Pull Request no repositório original.</li>
+</ol>
+
+<h2>Licença</h2>
+
+<p>O projeto Hefestus está licenciado sob a MIT License.</p>
+
+<h2>O Futuro</h2>
+
+<p>Por enquanto, o projeto trata-se de um programa básico que atende às necessidades de forma eficiente, mas simples. Algumas limitações atuais incluem:</p>
+
+<ul>
+  <li>O relatório é um arquivo CSV com as atividades realizadas. Futuramente, será implementado um dashboard na página de relatórios. Enquanto isso, é possível utilizar o PowerBI para gerar relatórios incríveis.</li>
+  <li>O programa requer um arquivo Excel para a atualização dos horímetros. Essa abordagem foi escolhida para permitir a integração com outros softwares utilizados pelas empresas. Para facilitar a atualização dos horímetros, futuramente, pode ser criada uma API que interaja com um aplicativo específico. Por enquanto, é possível desenvolver um arquivo Python com o Pandas para gerar o arquivo Excel necessário.</li>
+  <li>Por se tratar de uma primeira versão, o programa pode conter outros erros ainda não explorados, mas que serão corrigidos em breve.</li>
+</ul>
+
+<h2>Contato</h2>
+
+<p>Para mais informações sobre o projeto ou entrar em contato com a equipe responsável, utilize os seguintes meios:</p>
+
+<ul>
+  <li>E-mail: rianbispo028@gmail.com</li>
+  <li>Website: <a href="https://rianalytics.wordpress.com/">https://rianalytics.wordpress.com/</a></li>
+  <li>LinkedIn: <a href="linkedin.com/in/rian-bispo">linkedin.com/in/rian-bispo</a></li>
+  <li>Instagram: rian.bsp</li>
+</ul>
+
+<h2>Outras Informações</h2>
+
+<p>Fiquem à vontade para contribuir ou se inspirar para aplicações específicas do seu problema!</p>
