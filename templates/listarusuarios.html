@@ -1,0 +1,39 @@
+{% extends 'homepage.html' %}
+
+{% block formulario %}
+<h1>Lista de Usuários</h1>
+<h5>➤ Aqui você pode exibir todos os usuários e mudar suas permissões</h5>
+<form method="POST">
+    {{ form.csrf_token }}
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Permissão</th>
+                <th>Confirmar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario.id }}</td>
+                <td>{{ usuario.username }}</td>
+                <td>{{ usuario.email }}</td>
+                <td>
+                    <select name="permissao" class="form-control">
+                        <option value="visualizar" {% if usuario.permissao == 'visualizar' %}selected{% endif %}>Visualizar</option>
+                        <option value="admin" {% if usuario.permissao == 'admin' %}selected{% endif %}>Admin</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="hidden" name="id" value="{{ usuario.id }}">
+                    <button type="submit">Atualizar</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</form>
+{% endblock %}

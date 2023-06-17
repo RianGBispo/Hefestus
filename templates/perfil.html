@@ -1,0 +1,47 @@
+{% extends 'homepage.html' %}
+
+{% block titulo %}
+    Perfil - Controle de Óleo
+{% endblock %}
+
+{% block body %}
+
+{% block formulario %}
+    <h1>Bem Vindo {{ usuario.username }} !!!</h1>
+<h5>➤ Aqui você pode editar suas informações</h5>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="message">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+        {{ form.csrf_token }}
+
+        {{ form.username.label() }}
+        {{ form.username() }}
+
+        {{ form.email.label() }}
+        {{ form.email() }}
+
+        {{ form.senha_atual.label() }}
+        {{ form.senha_atual() }}
+
+        {{ form.nova_senha.label() }}
+        {{ form.nova_senha() }}
+
+        {{ form.confirmacao_nova_senha.label() }}
+        {{ form.confirmacao_nova_senha() }}
+
+        {{ form.botao_confirmacao() }}
+    </form>
+{% endblock %}
+
+<p></p>
+<a href="{{ url_for('logout') }}">Sair</a>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'homepage.html' %}
+
+{% block formulario %}
+  <style>
+    /* Novos estilos */
+    .maquinas-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .maquinas-list {
+      width: 30%;
+    }
+
+    .maquina-item {
+      margin-bottom: 20px;
+      padding: 10px;
+      border-radius: 4px;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    /* Estilos para diferentes status de máquinas */
+    .passou-troca {
+      background-color: #FF0000; /* Vermelho */
+    }
+
+    .proxima-troca {
+      background-color: #FFFF00; /* Amarelo */
+    }
+
+    .restante {
+      background-color: #008000; /* Verde */
+    }
+  </style>
+
+  <h1>Máquinas Próximas da Troca de Óleo</h1>
+
+  <div class="maquinas-container">
+    <div class="maquinas-list">
+      <h2>Máquinas que já passaram da troca:</h2>
+      {% for maquina in maquinas_passadas %}
+        <div class="maquina-item passou-troca">
+          {{ maquina.maquina.nome }} - {{ maquina.compartimento.nome }} - Passaram {{ maquina.horas_passadas }} horas da troca
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="maquinas-list">
+      <h2>Máquinas próximas da troca:</h2>
+      {% for maquina in maquinas_proximas %}
+        <div class="maquina-item proxima-troca">
+          {{ maquina.maquina.nome }} - {{ maquina.compartimento.nome }} - Faltam {{ maquina.horas_faltando }} horas para a troca
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="maquinas-list">
+      <h2>Máquinas restantes:</h2>
+      {% for maquina in maquinas_restantes %}
+        <div class="maquina-item restante">
+          {{ maquina.nome }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

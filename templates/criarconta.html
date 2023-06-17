@@ -1,0 +1,39 @@
+{% extends 'homepage.html' %}
+
+{% block titulo %}Criar conta - Hefestus{% endblock %}
+
+{% block formulario %}
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="message">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+<h1>Crie sua Conta</h1>
+    <form method="POST">
+    {{ form.csrf_token }}
+
+        <label class="campo-email">
+            <i class="fas fa-envelope"></i> E-mail:
+            {{ form.email }}
+        </label>
+        <label class="campo-username">
+            <i class="fas fa-user"></i> Usuário:
+            {{ form.username }}
+        </label>
+        <label class="campo-senha">
+            <i class="fas fa-lock"></i> Senha:
+            {{ form.senha }}
+        </label>
+        <label class="campo-confirmacao-senha">
+            <i class="fas fa-lock"></i> Confirmação de Senha:
+            {{ form.confirmacao_senha }}
+        </label>
+
+        <button class="botao-confirmacao" type="submit">{{ form.botao_confirmacao.label }}</button>
+
+    </form>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'homepage.html' %}
+
+{% block titulo %}
+    Inserir Compartimentos - Hefestus
+{% endblock %}
+
+{% block formulario %}
+<h1>Inserir Compartimento</h1>
+<h5>➤ Aqui você pode inserir os compartimentos que um modelo possui</h5>
+    <form method="POST">
+        {{ form_compartimentos.csrf_token }}
+
+        {{ form_compartimentos.nome.label() }}
+        {{ form_compartimentos.nome() }}
+
+        {{ form_compartimentos.tipo_oleo.label() }}
+        {{ form_compartimentos.tipo_oleo() }}
+
+        {{ form_compartimentos.quant_oleo.label() }}
+        {{ form_compartimentos.quant_oleo() }}
+
+        {{ form_compartimentos.intervalo.label() }}
+        {{ form_compartimentos.intervalo() }}
+
+
+        {{ form_compartimentos.modelo.label() }}
+        {{ form_compartimentos.modelo() }}
+
+
+        <button class="botao-confirmacao">Inserir Compartimento</button>
+        <p></p>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </form>
+{% endblock %}

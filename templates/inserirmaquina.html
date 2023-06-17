@@ -1,0 +1,35 @@
+{% extends 'homepage.html' %}
+
+{% block titulo %}
+    Inserir Máquinas - Hefestus
+{% endblock %}
+
+{% block formulario %}
+<h1>Inserir Máquina</h1>
+<h5>➤ Aqui você pode cadastrar as maquinas no banco de dados</h5>
+    <form method="POST">
+        {{ form_maquina.csrf_token }}
+
+        {{ form_maquina.nome.label() }}
+        {{ form_maquina.nome() }}
+
+        {{ form_maquina.horimetro.label() }}
+        {{ form_maquina.horimetro() }}
+
+        {{ form_maquina.modelo.label() }}
+        {{ form_maquina.modelo() }}
+
+        <button class="botao-confirmacao">Confirmar</button>
+        <p></p>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </form>
+{% endblock %}

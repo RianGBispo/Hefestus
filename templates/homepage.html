@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block titulo %}Hefestus - Controle de Óleo{% endblock %}</title>
+
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<body>
+    <div id="menu-superior">
+        <button id="perfil-button" onclick="location.href='/perfil/{{ current_user.id }}';">
+            <i class="fas fa-user"></i> Perfil
+        </button>
+    </div>
+
+    <div id="barra-lateral">
+        <img class="logo" src="{{ url_for('static', filename='fotos_site/imagem2.png') }}" alt="Logo">
+
+        {% block barra_lateral %}
+        <button class="rota-button" onclick="location.href='/';">
+            <i class="fas fa-home"></i> Homepage
+        </button>
+        <button class="rota-button" onclick="location.href='/criar-conta';">
+            <i class="fas fa-user-plus"></i> Criar Conta
+        </button>
+        <button class="rota-button" onclick="location.href='/inserir-modelo';">
+            <i class="fas fa-plus"></i> Inserir Modelo
+        </button>
+        <button class="rota-button" onclick="location.href='/inserir-maquina';">
+            <i class="fas fa-plus"></i> Inserir Máquina
+        </button>
+        <button class="rota-button" onclick="location.href='/inserir-compartimentos';">
+            <i class="fas fa-plus"></i> Inserir Compartimentos
+        </button>
+        <button class="rota-button" onclick="location.href='/painel-de-controle';">
+            <i class="fas fa-cogs"></i> Painel de Controle
+        </button>
+        <button class="rota-button" onclick="location.href='/maquinas-proximas-troca';">
+            <i class="fas fa-flask"></i> Proximas Trocas de Òleo
+        </button>
+
+        <button class="rota-button" onclick="location.href='/atualizacoes';">
+            <i class="fas fa-sync-alt"></i> Atualizações
+        </button>
+
+        <button class="rota-button" onclick="location.href='/relatorios';">
+            <i class="fas fa-file-alt"></i> Relatórios
+        </button>
+
+        <button class="rota-button" onclick="location.href='/listar-usuarios';">
+            <i class="fas fa-users"></i> Listar Usuários
+        </button>
+        <button class="rota-button" onclick="location.href='/atualizar-horimetro';">
+            <i class="fas fa-arrow-alt-circle-up"></i> Atualizar Horímetro/Odômetro
+        </button>
+        <button class="rota-button" onclick="location.href='/logout';">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+        {% endblock %}
+
+        <p style="color: #fff; margin-top: auto;">By Rian Bispo</p>
+    </div>
+
+    <div id="formulario">
+        {% block formulario %}
+
+        <h1>Controle de Óleo</h1> <!-- Adicionado o título -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <form action="{{ url_for('homepage') }}" method="POST">
+            {{ form.csrf_token }}
+            <label>
+                <i class="fas fa-envelope"></i> E-mail:
+                {{ form.email }}
+            </label>
+            <label>
+                <i class="fas fa-lock"></i> Senha:
+                {{ form.senha }}
+            </label>
+            <button type="submit">{{ form.botao_confirmacao.label }}</button>
+        </form>
+        {% endblock %}
+    </div>
+</body>
+
+</html>

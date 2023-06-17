@@ -1,0 +1,23 @@
+{% extends 'homepage.html' %}
+
+{% block titulo %}
+    Relatórios - Controle de Óleo
+{% endblock %}
+
+{% block formulario %}
+
+    <h1>Relatórios</h1>
+    <p>Clique para baixar um arquivo csv com todas as informações de todas as atividades de lubrificação realizadas</p>
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="message">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <button class="rota-button" onclick="location.href='/exportar-dados';">
+            <i class="fas fa-arrow-alt-circle-down"></i> Baixar dados
+        </button>
+{% endblock %}

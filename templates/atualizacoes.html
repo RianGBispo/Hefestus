@@ -1,0 +1,184 @@
+{% extends 'homepage.html' %}
+
+{% block titulo %}
+    Atualizações - Hefestus
+{% endblock %}
+
+{% block formulario %}
+    <h1>Atualizações</h1>
+<h5>➤ Aqui você pode adicionar trocas e reposições de óleo de um bem</h5>
+    <form method="POST">
+        {{ form.csrf_token }}
+
+
+
+        <div class="form-group">
+    <label>{{ form.busca_maquina.label }}</label>
+    {{ form.busca_maquina(class_="form-control", id="busca-maquina") }}
+    <button type="button" class="btn btn-primary" onclick="buscarMaquina()">Buscar</button>
+</div>
+
+        <div class="form-group">
+            {{ form.data_realizacao.label }}
+            {{ form.data_realizacao }}
+        </div>
+
+        <div class="form-group">
+            {{ form.maquina_id.label }}
+            {{ form.maquina_id(class_="form-control", id="maquina", onchange="fetchCompartimentos()") }}
+        </div>
+
+        <div class="form-group">
+            {{ form.numero_os.label }}
+            {{ form.numero_os }}
+        </div>
+
+        <div class="form-group">
+            {{ form.litros_utilizados.label }}
+            {{ form.litros_utilizados(class_="form-control") }}
+        </div>
+
+        <div class="form-group">
+            {{ form.horimetro.label }}
+            {{ form.horimetro(class_="form-control") }}
+        </div>
+
+        <div class="form-group">
+    <label for="compartimento">Compartimento</label>
+    <select class="form-control" id="compartimento" name="compartimento_id"></select>
+</div>
+
+
+        <div class="form-group">
+            {{ form.tipo.label }}
+            {{ form.tipo }}
+        </div>
+
+        <button type="submit" class="btn btn-primary" onclick="this.form.submit()">{{ form.botao_confirmacao.label }}</button>
+
+    </form>
+        {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li{% if 'error' in message %} class="error"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<script>
+    // Função para atualizar dinamicamente as opções do campo "Compartimento" com base na seleção da máquina
+    function fetchCompartimentos() {
+        var maquinaSelect = document.getElementById("maquina");
+        var compartimentoSelect = document.getElementById("compartimento");
+        var maquinaId = maquinaSelect.value;
+        var url = "/api/compartimentos/" + maquinaId;
+
+        fetch(url)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                compartimentoSelect.innerHTML = "";
+
+                data.forEach(function(compartimento) {
+                    var option = document.createElement("option");
+                    option.value = compartimento.id;
+                    option.text = compartimento.nome;
+                    compartimentoSelect.appendChild(option);
+                });
+            });
+    }
+
+    // Chamar a função fetchCompartimentos ao carregar a página para exibir os compartimentos corretos inicialmente
+    window.addEventListener('DOMContentLoaded', fetchCompartimentos);
+</script>
+
+<script>
+    // Função para atualizar dinamicamente as opções do campo "Compartimento" com base na seleção da máquina
+    function fetchCompartimentos() {
+        var maquinaSelect = document.getElementById("maquina");
+        var compartimentoSelect = document.getElementById("compartimento");
+        var maquinaId = maquinaSelect.value;
+        var url = "/api/compartimentos/" + maquinaId;
+
+        fetch(url)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                compartimentoSelect.innerHTML = "";
+
+                data.forEach(function(compartimento) {
+                    var option = document.createElement("option");
+                    option.value = compartimento.id;
+                    option.text = compartimento.nome;
+                    compartimentoSelect.appendChild(option);
+                });
+            });
+    }
+
+    // Chamar a função fetchCompartimentos ao carregar a página para exibir os compartimentos corretos inicialmente
+    window.addEventListener('DOMContentLoaded', fetchCompartimentos);
+</script>
+
+<script>
+    // Função para buscar a máquina com base no nome digitado
+    function buscarMaquina() {
+        var buscaMaquinaInput = document.getElementById("busca-maquina");
+        var maquinaSelect = document.getElementById("maquina");
+        var compartimentoSelect = document.getElementById("compartimento");
+        var nomeMaquina = buscaMaquinaInput.value.trim();
+
+        // Fazer a busca somente se o nome da máquina estiver preenchido
+        if (nomeMaquina) {
+            var url = "/api/maquinas/buscar/" + nomeMaquina;
+
+            fetch(url)
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
+                    maquinaSelect.innerHTML = "";
+                    compartimentoSelect.innerHTML = "";
+
+                    data.forEach(function(maquina) {
+                        var option = document.createElement("option");
+                        option.value = maquina.id;
+                        option.text = maquina.nome;
+                        maquinaSelect.appendChild(option);
+                    });
+                });
+        }
+    }
+
+    // Função para atualizar dinamicamente as opções do campo "Compartimento" com base na seleção da máquina
+    function fetchCompartimentos() {
+        var maquinaSelect = document.getElementById("maquina");
+        var compartimentoSelect = document.getElementById("compartimento");
+        var maquinaId = maquinaSelect.value;
+        var url = "/api/compartimentos/" + maquinaId;
+
+        fetch(url)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                compartimentoSelect.innerHTML = "";
+
+                data.forEach(function(compartimento) {
+                    var option = document.createElement("option");
+                    option.value = compartimento.id;
+                    option.text = compartimento.nome;
+                    compartimentoSelect.appendChild(option);
+                });
+            });
+    }
+
+    // Chamar a função fetchCompartimentos ao carregar a página para exibir os compartimentos corretos inicialmente
+    window.addEventListener('DOMContentLoaded', fetchCompartimentos);
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'homepage.html' %}
+
+{% block titulo %}
+    Inserir Modelo - Hefestus
+{% endblock %}
+
+{% block formulario %}
+    <h1>Inserir Modelo</h1>
+<h5>➤ Aqui você pode inserir os modelos ao banco de dados</h5>
+    <form method="POST">
+        {{ form_modelo.csrf_token }}
+
+        {{ form_modelo.nome.label() }}
+        {{ form_modelo.nome() }}
+
+        <button class="botao-confirmacao" type="submit">{{ form_modelo.botao_confirmacao.label }}</button>
+        <p></p>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </form>
+{% endblock %}

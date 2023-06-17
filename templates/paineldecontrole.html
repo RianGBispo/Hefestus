@@ -1,0 +1,213 @@
+{% extends 'homepage.html' %}
+
+{% block titulo %}
+    Painel de Controle - Hefestus
+{% endblock %}
+
+{% block formulario %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="message">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <h1>Painel de Controle</h1>
+    <div id="avisos">
+        <h3>Avisos</h3>
+        <table>
+  <thead>
+    <tr>
+      <th>Máquina</th>
+      <th>Aviso</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for maquina in maquinas_sem_os %}
+    <tr>
+      <td>{{ maquina.nome }}</td>
+      <td>Possível vazamento de óleo</td>
+    </tr>
+    {% for atividade in maquina.atividades %}
+    <tr>
+      <td></td>
+      <td>
+        {% if atividade.numero_os %}
+        {{ atividade.numero_os }}
+        {% else %}
+        <form action="{{ url_for('atualizar_atividade', atividade_id=atividade.id) }}" method="POST">
+          {{ form_atualizar_atividade.csrf_token }}
+          <input type="hidden" name="editar_atividade_id" value="{{ atividade.id }}">
+          <input type="text" name="numero_os" required>
+          <button type="submit" class="btn btn-primary">Salvar</button>
+        </form>
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+    {% endfor %}
+  </tbody>
+</table>
+    </div>
+    <h5>➤ Aqui você pode excluir algum lançamento incorreto e verificar os cadastros no banco de dados <p>obs: Só é possível excluir opções que possuem contorno preto.</p></h5>
+
+    <button onclick="toggleTable('atividades')">Atividades</button>
+    <button onclick="toggleTable('maquinas')">Máquinas</button>
+    <button onclick="toggleTable('compartimentos')">Compartimentos</button>
+    <button onclick="toggleTable('modelos')">Modelos</button>
+
+    <table id="atividades" style="display: none;">
+        <thead>
+            <tr>
+                <th>ID Atividade</th>
+                <th>Bem</th>
+                <th>Compartimento</th>
+                <th>Tipo</th>
+                <th>Litros</th>
+                <th>Numero OS</th>
+                <th>Horimetro/Odômetro</th>
+                <th>Data</th>
+                <th>  </th>
+                <th>Custo</th>
+                <th></th>
+                <th>Usuário</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for atividade in atividades %}
+                <tr>
+                    <td>{{ atividade.id }}</td>
+                    <td>{{ atividade.maquina.nome }}</td>
+                    <td>{{ atividade.compartimento.nome }}</td>
+                    <td>{{ atividade.tipo }}</td>
+                    <td>{{ atividade.litros_utilizados }}</td>
+                    <td>{{ atividade.numero_os }}</td>
+                    <td>{{ atividade.horimetro }}</td>
+                    <td>{{ atividade.data_realizacao }}</td>
+                    <td></td>
+                    <td>{{ atividade.litros_utilizados * 20.85 }}</td>
+                    <td></td>
+                    <td>{{ atividade.usuario.username }}</td>
+                    <td>
+                        <a href="{{ url_for('excluir_atividade', atividade_id=atividade.id) }}">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <table id="maquinas" style="display: none;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Horímetro</th>
+                <th>Modelo</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for maquina in maquinas %}
+                <tr>
+                    <td>{{ maquina.id }}</td>
+                    <td>{{ maquina.nome }}</td>
+                    <td>{{ maquina.horimetro }}</td>
+                    <td>{{ maquina.modelo.nome }}</td>
+                    <td>
+                        {% if maquina.atividades %}
+                            <button type="button" class="btn btn-danger" disabled>Excluir</button>
+                        {% else %}
+                            <form action="{{ url_for('excluir_maquina', maquina_id=maquina.id) }}" method="POST">
+                                {{ form_excluir_maquina.csrf_token }}
+                                <button type="submit" class="btn btn-danger">Excluir</button>
+                            </form>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <table id="compartimentos" style="display: none;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Tipo de Óleo</th>
+                <th>Quantidade de Óleo</th>
+                <th>Intervalo</th>
+                <th>Última Troca</th>
+                <th>Data Última Troca</th>
+                <th>Modelo</th>
+                <th>Máquina</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for compartimento in compartimentos %}
+                <tr>
+                    <td>{{ compartimento.id }}</td>
+                    <td>{{ compartimento.nome }}</td>
+                    <td>{{ compartimento.tipo_oleo }}</td>
+                    <td>{{ compartimento.quantidade_oleo }}</td>
+                    <td>{{ compartimento.intervalo }}</td>
+                    <td>{{ compartimento.ultima_troca }}</td>
+                    <td>{{ compartimento.data_ultima_troca }}</td>
+                    <td>{{ compartimento.maquina.modelo.nome }}</td>
+                    <td>{{ compartimento.maquina.nome }}</td>
+                    <td>
+                        <form action="{{ url_for('excluir_compartimento') }}" method="POST">
+                            {{ form_excluir_compartimento.csrf_token }}
+                            <input type="hidden" name="compartimento_id" value="{{ compartimento.id }}">
+                            <button type="submit" class="btn btn-danger">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <table id="modelos" style="display: none;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Marca</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for modelo in modelos %}
+                <tr>
+                    <td>{{ modelo.id }}</td>
+                    <td>{{ modelo.nome }}</td>
+                    <td>{{ modelo.marca }}</td>
+                    <td>
+                        {% if modelo.maquinas %}
+                            <button type="button" class="btn btn-danger" disabled>Excluir</button>
+                        {% else %}
+                            <form action="{{ url_for('excluir_modelo', modelo_id=modelo.id) }}" method="POST">
+                                {{ form_excluir_modelo.csrf_token }}
+                                <button type="submit" class="btn btn-danger">Excluir</button>
+                            </form>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        function toggleTable(tableId) {
+            var table = document.getElementById(tableId);
+            if (table.style.display === 'none') {
+                table.style.display = 'block';
+            } else {
+                table.style.display = 'none';
+            }
+        }
+    </script>
+{% endblock %}
