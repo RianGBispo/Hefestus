@@ -95,12 +95,12 @@
 <p>Para mais informações sobre o projeto ou entrar em contato com a equipe responsável, utilize os seguintes meios:</p>
 
 <ul>
-  <li>E-mail: rianbispo028@gmail.com</li>
-  <li>Website: <a href="https://rianalytics.wordpress.com/">https://rianalytics.wordpress.com/</a></li>
-  <li>LinkedIn: [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/rian-bispo)</li>
-
-  <li>Instagram: rian.bsp</li>
+  <li><a href="mailto:rianbispo028@gmail.com"><img src="https://img.shields.io/badge/Email-rianbispo028%40gmail.com-red?style=flat&logo=gmail"></a></li>
+  <li><a href="https://rianalytics.wordpress.com/"><img src="https://img.shields.io/badge/Website-rianalytics.wordpress.com-blue?style=flat&logo=wordpress"></a></li>
+  <li><a href="https://www.linkedin.com/in/rian-bispo/"><img src="https://img.shields.io/badge/LinkedIn-rian--bispo-blue?style=flat&logo=linkedin"></a></li>
+  <li><a href="https://www.instagram.com/rian.bsp/"><img src="https://img.shields.io/badge/Instagram-rian.bsp-purple?style=flat&logo=instagram"></a></li>
 </ul>
+
 
 <h2>Outras Informações</h2>
 
